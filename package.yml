@@ -1,0 +1,8 @@
+name: uSizer
+description: Useful class for resize DOM objects
+author: joseluis_q
+category: Utilities
+tags: [resize, tool, sizing, dom]
+current: 1.0
+license: MIT License
+demo: http://goo.gl/2VGUz

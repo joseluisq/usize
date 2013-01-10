@@ -1,0 +1,206 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>uSizer | Test functions </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <style>
+
+            body {
+                padding: 0;
+                margin: 0;
+                font-family: monospace;
+                font-size: 11px;
+            }
+
+            #toolbar {
+                position: relative;
+                width: auto;
+                height: 50px;
+                padding: 10px 10px 10px 10px;
+                text-align: center;
+                background: lightgray;
+            }
+
+            #toolbar > div {
+                width: 100%;
+                height: 50px;
+                background: lightgray;
+            }
+
+            #container {
+                position: relative;
+                padding: 40px 20px 20px 20px;
+                margin-top: 5%;
+            }
+
+            #scale {
+                width: 200px;
+                height: 200px;
+                background-color: #DB5C5C;
+                float: left;
+                -webkit-transition: all .3s ease-out;
+                -moz-transition: all .3s ease-out;
+                transition: all .3s ease-out;
+            }
+
+            #parent3 {
+                margin-left: 5%;
+            }
+            
+            #parent {
+                margin-left: 17%;
+            }
+            
+            #parent,#parent3 {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                float: left;
+            }
+
+            #child, #child3 {
+                width: 200px;
+                height: 200px;
+                background-color: rgba(184, 184, 184, .5);
+            }
+
+            #parent2 {
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                float: left;
+                margin-left: 10%;
+            }
+
+            #child2 {
+                width: 320px;
+                height: 320px;
+                background-color: rgba(184, 184, 184, .5);
+                opacity: .7;
+            }
+
+            #values {
+                display: block;
+                padding: 10px;
+            }
+
+            .title {
+                font-size: 14px;
+                padding: 10px;
+                color: white;
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+                text-shadow: 1px 1px 1px #3C3C3C;
+                z-index: 1;
+            }
+
+            .box {
+                display: table;
+            }
+
+        </style>
+
+
+        <script src="../assets/mootools-core-1.4.5-full-compat-yc.js"></script>
+        <script src="../assets/uSizer-1.0.js"></script>
+
+        <script>
+            document.addEvent('domready', function() {
+                var sizer = new uSizer(), values = $('values');
+
+
+                $('toolbar').getElements('button').each(function(ele) {
+                    ele.addEvent('click', function() {
+                        var xy = (300 - 100) * Math.random() + 100,
+                                s = (130 - 80) * Math.random() + 80, str = '';
+
+                        switch (this.getProperty('name')) {
+                            case 'scale':
+                                sizer.setChild($('scale'));
+                                sizer.scale(s);
+                                str = 'Scale: ' + s + '%';
+                                break;
+                            case 'resizewidth':
+                                sizer.setChild($('scale'));
+                                sizer.resizeToWidth(xy);
+                                str = 'Width: ' + xy + 'px';
+                                break;
+                            case 'resizeheight':
+                                sizer.setChild($('scale'));
+                                sizer.resizeToHeight(xy);
+                                str = 'Height: ' + xy + 'px';
+                                break;
+                        }
+
+                        setValues(str);
+                    });
+                });
+
+                function setValues(str) {
+                    values.set('text', str);
+                }
+
+                /* Simple crop */
+                sizer.setParent($('parent3'));
+                sizer.setChild($('child3'));
+                sizer.crop(0,0);
+                
+                /* Center crop */
+                sizer.setParent($('parent'));
+                sizer.setChild($('child'));
+                sizer.centerCrop();
+
+                /* Center crop + resize */
+                sizer.setParent($('parent2'));
+                sizer.setChild($('child2'));
+                sizer.centerCropResize();
+
+            });
+        </script>
+
+    </head>    
+    <body>
+        <div id="toolbar">
+            <div>
+                <button name="scale">scale</button>
+                <button name="resizewidth">resize from width</button>
+                <button name="resizeheight">resize from height</button>
+                <span id="values">--</span>
+            </div>
+        </div>
+
+        <div id="container">
+
+            <div id="scale" class="box">
+                <span class="title">Resize me !</span>
+            </div>
+
+            <div id="parent3">
+                <div id="child3" class="box">
+                    <span class="title">Simple crop !</span>
+                </div>
+            </div>
+            
+            <div id="parent">
+                <div id="child" class="box">
+                    <span class="title">Center crop !</span>
+                </div>
+            </div>
+
+            <div id="parent2">
+                <span class="title" style="position: absolute;">Center crop + resize !</span>
+                <img id="child2" class="box" width="320" height="320" src="http://farm9.staticflickr.com/8485/8260163299_f0007ae663_n.jpg"/>
+            </div>
+
+        </div>
+
+
+
+    </body>
+</html>
