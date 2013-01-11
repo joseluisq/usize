@@ -48,7 +48,7 @@ Live Demo
 
 Screenshots
 -----------
-* ![Screenshot](http://goo.gl/W8dxR)
+![Screenshot](http://goo.gl/W8dxR)
 
 
 Base Doc
