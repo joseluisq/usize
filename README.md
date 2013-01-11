@@ -1,7 +1,7 @@
 uSizer
 ======
 
-Useful class for resize DOM objects
+Useful class for resize DOM elements
 
 
 How to use
@@ -43,12 +43,12 @@ The html code :
 Live Demo
 -----------
 
-* Tetris game live demo [here](http://goo.gl/2VGUz)
+* uSizer live demo [here](http://goo.gl/2VGUz)
 
 
 Screenshots
 -----------
-* Tetris Game ![Screenshot](http://goo.gl/W8dxR)
+* ![Screenshot](http://goo.gl/W8dxR)
 
 
 Base Doc
@@ -56,13 +56,13 @@ Base Doc
 
 Public Methods :
 
-  * uTetris.setParent()    
-  * uTetris.setChild()
-  * uTetris.resizeToHeight()
-  * uTetris.resizeToWidth()
-  * uTetris.getPropWidth()
-  * uTetris.getPropHeight()
-  * uTetris.scale()
-  * uTetris.crop()
-  * uTetris.centerCrop()
-  * uTetris.centerCropResize()
+  * uSizer.setParent()    
+  * uSizer.setChild()
+  * uSizer.resizeToHeight()
+  * uSizer.resizeToWidth()
+  * uSizer.getPropWidth()
+  * uSizer.getPropHeight()
+  * uSizer.scale()
+  * uSizer.crop()
+  * uSizer.centerCrop()
+  * uSizer.centerCropResize()
